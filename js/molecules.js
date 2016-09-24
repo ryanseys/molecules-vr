@@ -1,4 +1,5 @@
 const scene = document.querySelector('a-scene');
+const container = document.querySelector('#container');
 
 /**
  * Loads a molecule CML file from a given filename.
@@ -45,7 +46,7 @@ function drawAtom(atom) {
     color: color
   });
   obj.setAttribute('position', coords);
-  scene.appendChild(obj);
+  container.appendChild(obj);
 }
 
 function getAtomColor(atom) {
