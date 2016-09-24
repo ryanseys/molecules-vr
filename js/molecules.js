@@ -19,21 +19,22 @@ function loadMolecule(filename) {
  * Parses the XML response for a CML file.
  */
 function parseResponse(xml) {
-  let xmlDoc = xml.responseXML;
+  var xmlDoc = xml.responseXML;
   if (!xmlDoc) {
     console.log('There was an error loading that file.');
     return;
   }
 
-  let atoms = xmlDoc.getElementsByTagName('atom');
-  for (atom of atoms) {
+  var atoms = Array.from(xmlDoc.getElementsByTagName('atom'));
+
+  atoms.forEach(function(atom) {
     drawAtom(atom);
-  }
+  });
 }
 
 function drawAtom(atom) {
-  let coords = getAtomCoordinates(atom);
-  let color = getAtomColor(atom);
+  var coords = getAtomCoordinates(atom);
+  var color = getAtomColor(atom);
 
   var obj = document.createElement('a-entity');
   obj.setAttribute('geometry', {
